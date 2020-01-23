@@ -1,6 +1,7 @@
 ﻿using NelnetProgrammingExercise.Models;
 using System;
 using System.Linq;
+using NelnetProgrammingExercise.Extensions;
 
 namespace NelnetProgrammingExercise
 {
@@ -15,9 +16,10 @@ namespace NelnetProgrammingExercise
             foreach (PersonModel person in people) {
                 Console.WriteLine($"Pets for {person.Name}:");
 
-                foreach(PetModel pet in pets)
+                foreach(PetModel pet in pets.OrderByPreferenceForPerson(person))
                 {
-                    Console.WriteLine($"{pet.Name} would be a {MatchManager.IsGood(person, pet)} pet.");
+
+                    Console.WriteLine($"{pet.Name} would be a {(MatchManager.IsGood(person, pet) ? "good" : "bad")} pet.");
                 }
 
                 Console.WriteLine();

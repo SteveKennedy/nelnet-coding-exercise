@@ -10,6 +10,6 @@ namespace NelnetProgrammingExercise.Models
         public virtual PetClassification PreferredClassification { get; set; }
         public virtual PetType PreferredType { get; set; }
         public virtual PetWeightCategory PreferredWeightCategory { get; set; }
-        public List<PreferenceOverride> PreferenceOverrides { get; set; }
+        public PreferenceOverride PreferenceOverrides { get; set; }
     }
 }

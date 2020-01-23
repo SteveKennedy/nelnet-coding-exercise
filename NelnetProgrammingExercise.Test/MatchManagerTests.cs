@@ -20,7 +20,8 @@ namespace NelnetProgrammingExercise.Tests
             {
                 Name = "Steve",
                 PreferredClassification = PetClassification.Mammal,
-                PreferredType = PetType.Dog
+                PreferredType = PetType.Dog,
+                PreferredWeightCategory = PetWeightCategory.ExtraLarge
             };
 
             var pet = new PetModel
@@ -45,7 +46,8 @@ namespace NelnetProgrammingExercise.Tests
             {
                 Name = "Steve",
                 PreferredClassification = PetClassification.Mammal,
-                PreferredType = PetType.Dog
+                PreferredType = PetType.Dog,
+                PreferredWeightCategory = PetWeightCategory.ExtraLarge
             };
 
             var pet = new PetModel
@@ -60,6 +62,36 @@ namespace NelnetProgrammingExercise.Tests
 
             // Assert
             Assert.IsTrue(matchResultIsGood);
+        }
+
+        [TestMethod()]
+        public void IsGoodTest_MatchesClassification_ButHasOverrideExceptionForCat()
+        {
+            // Arrange
+            var catOverride = new PreferenceOverride();
+            catOverride.OverrideTypes = new List<PetType> { PetType.Cat };
+
+            var person = new PersonModel
+            {
+                Name = "Steve",
+                PreferredClassification = PetClassification.Mammal,
+                PreferredType = PetType.Dog,
+                PreferredWeightCategory = PetWeightCategory.ExtraLarge,
+                PreferenceOverrides = catOverride
+            };
+
+            var pet = new PetModel
+            {
+                Name = "Fluffy",
+                Classification = PetClassification.Mammal,
+                Type = PetType.Cat
+            };
+
+            // Act
+            var matchResultIsGood = MatchManager.IsGood(person, pet);
+
+            // Assert
+            Assert.IsFalse(matchResultIsGood);
         }
     }
 }
