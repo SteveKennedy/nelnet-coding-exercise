@@ -7,8 +7,8 @@ namespace NelnetProgrammingExercise.Models
     public class PersonModel
     {
         public string Name { get; set; }
-        public PetClassification PreferredClassification { get; set; }
-        public PetType PreferredType { get; set; }
-        public PetWeightCategory PreferredWeightCategory { get; set; }
+        public virtual PetClassification PreferredClassification { get; set; }
+        public virtual PetType PreferredType { get; set; }
+        public virtual PetWeightCategory PreferredWeightCategory { get; set; }
     }
 }
