@@ -13,13 +13,15 @@ namespace NelnetProgrammingExercise
                 {
                     Name = "Dalinar",
                     PreferredClassification = PetClassification.Mammal,
-                    PreferredType = PetType.Snake
+                    PreferredType = PetType.Snake,
+                    PreferredWeightCategory = PetWeightCategory.Medium
                 },
                 new PersonModel()
                 {
                     Name = "Kaladin",
                     PreferredClassification = PetClassification.Bird,
-                    PreferredType = PetType.Goldfish
+                    PreferredType = PetType.Goldfish,
+                    PreferredWeightCategory = PetWeightCategory.ExtraSmall
                 }
             };
 

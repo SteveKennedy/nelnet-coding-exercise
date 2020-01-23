@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using NelnetProgrammingExercise.Models;
 
 namespace NelnetProgrammingExercise.Tests
 {
@@ -50,6 +51,28 @@ namespace NelnetProgrammingExercise.Tests
             
             // Assert
             Assert.ThrowsException<InvalidOperationException>(() => objects.Pets.Single(p => p.Name == "fakepetname"));
+        }
+
+        [TestMethod]
+        public void SetupObjectsTest_Kaladin_ShouldPreferExtraSmall()
+        {
+            // Act
+            var objects = InitializationManager.SetupObjects();
+
+            // Assert
+            Assert.AreEqual(PetWeightCategory.ExtraSmall, 
+                objects.People.Single(p=>p.Name == "Kaladin").PreferredWeightCategory);
+        }
+
+        [TestMethod]
+        public void SetupObjectsTest_Dalinar_ShouldPreferExtraSmall()
+        {
+            // Act
+            var objects = InitializationManager.SetupObjects();
+
+            // Assert
+            Assert.AreEqual(PetWeightCategory.Medium,
+                objects.People.Single(p => p.Name == "Dalinar").PreferredWeightCategory);
         }
     }
 }

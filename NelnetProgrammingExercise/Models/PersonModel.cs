@@ -9,5 +9,6 @@ namespace NelnetProgrammingExercise.Models
         public string Name { get; set; }
         public PetClassification PreferredClassification { get; set; }
         public PetType PreferredType { get; set; }
+        public PetWeightCategory PreferredWeightCategory { get; set; }
     }
 }
